@@ -26,12 +26,13 @@
             <li class="nav-item">
               <%= link_to 'USERS', users_path, class: 'nav-link text-light' %>
             </li>
+            <li>
+              <%= link_to 'Books', books_path, class: 'nav-link text-light' %>
+            </li>
             <li class="nav-item">
               <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
             </li>
-            <li>
-              <%= link_to 'Create Book', new_book_path, class: 'nav-link text-light' %>
-            </li>
+
             <% else %>
             <li>
               <%= link_to "HOME", root_path, class: 'nav-link text-light' %>
