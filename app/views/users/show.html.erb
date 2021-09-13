@@ -1,0 +1,29 @@
+<h1>マイページ</h1>
+
+<div>
+  <h3><%= @user.name %></h3>
+
+
+  <% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+
+</div>
+
+
+<% @books.each do |book| %>
+<div>
+  <%= attachment_image_tag @users, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
+
+  <%= book.user.name %>
+
+  <%= link_to book_path(book.id) do %>
+   <%= book.title %>
+  <% end %>
+
+  <%= book.body %>
+
+</div>
+<% end %>
+
+<%= link_to 'Create Book', new_book_path %>

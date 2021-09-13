@@ -4,24 +4,61 @@
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/0e9ae1a6e0.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "logout", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "sign up", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "sign in", new_user_session_path %>
-      </li>
-    <% end %>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3" href="/">Bookers2</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to 'HOME', user_path(current_user.id), class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'USERS', users_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to 'Create Book', new_book_path, class: 'nav-link text-dark' %>
+            </li>
+            <% else %>
+            <li>
+              <%= link_to "HOME", root_path, class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to "Sign in", new_user_session_path, class: 'nav-link text-dark' %>
+            </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <main class="mb-auto">
     <%= yield %>
+    </main>
+    <footer>
+      CopyRight Infratop.inc
+    </footer>
+
   </body>
 </html>
+
+
+

@@ -1,0 +1,12 @@
+<div>
+<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+
+  <p>TITLE：<%= @book.title %></p>
+  <p>OPINION：<%= @book.body %></p>
+  <p>ユーザーネーム：<%= @book.user.name %></p>
+  <p>投稿日時：<%= @book.created_at.strftime('%Y/%m/%d') %></p>
+
+   <% if @book.user == current_user %>
+    <%= link_to "Destroy", book_path(@book), method: :delete %>
+  <% end %>
+</div>

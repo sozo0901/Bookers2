@@ -1,0 +1,13 @@
+<% @users.each do |user| %>
+<div>
+  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+  <%= book.user.name %>
+
+  <%= link_to book_path(book.id) do %>
+   <%= book.title %>
+  <% end %>
+
+  <%= book.body %>
+
+</div>
+<% end %>
