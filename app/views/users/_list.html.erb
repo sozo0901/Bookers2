@@ -1,0 +1,23 @@
+<div class="col-lg-3">
+      <h2>User info</h2>
+      <%= attachment_image_tag user, :profile_image, size: "120x120", fallback: "no_image.jpg" %>
+      <table class="table">
+       <tr>
+        <th>name</th>
+        <th><%= user.name %></th>
+       </tr>
+       <tr>
+        <th>introduction</th>
+        <th><%= user.introduction %></th>
+       </tr>
+      </table>
+
+      <h2>NEW BOOK</h2>
+      <%= form_with model: book, local:true do |f| %>
+        <p>TITLE</p>
+        <%= f.text_field :title %>
+        <p>OPINION</p>
+        <%= f.text_area :body %>
+        <%= f.submit 'CREATE BOOK' %>
+      <% end %>
+  </div class="col-lg-3">

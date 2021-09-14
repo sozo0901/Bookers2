@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def index
+    @user = current_user
     @users = User.all
+    @book = Book.new
 
   end
 
@@ -13,6 +15,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def create
+    @book = Book.new(book_params)
+    @book.user_id = current_user
+    if @book.save
+      redirect_to book_path(@book.id)
+    else
+      @books = Book.all
+      @user = current_user
+      render :index
+    end
+  end
+
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
@@ -23,7 +37,7 @@ class UsersController < ApplicationController
    private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image)
+    params.require(:user).permit(:name, :introduction, :profile_image)
   end
 
 end
