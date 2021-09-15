@@ -11,9 +11,13 @@
         <th><%= user.introduction %></th>
        </tr>
       </table>
-
+      <%= link_to edit_user_path(user.id), class: "btn btn-outline-dark btn-lg btn-block", method: :get do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+      <br />
+      <br />
       <h2>NEW BOOK</h2>
-      <%= form_with model: book, local:true do |f| %>
+      <%= form_with model: book, url: books_path, method: :post, local:true do |f| %>
         <p>TITLE</p>
         <%= f.text_field :title %>
         <p>OPINION</p>

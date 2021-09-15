@@ -2,7 +2,7 @@
   <div class="row">
 
 
-<%= render 'users/list', book: @book, user: @user %>
+<%= render 'users/list', book: @book_new, user: @user %>
 
 
     <div class="col-lg-8 offset-md-1">
@@ -20,7 +20,7 @@
           <% @books.each do |book| %>
             <tr>
               <td>
-                <%= attachment_image_tag @user, :profile_image, size: "30x30", fallback: "no_image.jpg" %>
+                <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.jpg" %>
               </td>
               <td>
                 <%= link_to book_path(book.id) do %>

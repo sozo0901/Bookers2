@@ -2,7 +2,7 @@
   <div class="row">
 
 
-<%= render 'users/list', book: @book, user: @user %>
+<%= render 'users/list', book: @book_new, user: @user %>
 
 
     <div class="col-lg-8 offset-md-1">
@@ -19,8 +19,9 @@
           <% @users.each do |user| %>
             <tr>
               <td>
-
-              <td></td>
+                <%= attachment_image_tag user, :profile_image, size: "50x50", fallback: "no_image.jpg" %>
+              </td>
+              <td><%= user.name %></td>
               <td>
                 <%= link_to "show", user_path(user.id) %>
               </td>
