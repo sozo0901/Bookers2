@@ -6,27 +6,29 @@
 
 
     <div class="col-lg-8 offset-md-1">
-     <h2>Books detail</h2>
+     <h2>Book detail</h2>
       <table class="table">
         <thead>
           <tr>
             <th></th>
             <th></th>
             <th></th>
-            <th colspan="3"></th>
+            <th colspan="2"></th>
           </tr>
         </thead>
         <tbody>
             <tr>
               <td>
-                <%= attachment_image_tag @book.user, :profile_image, size: "50x50", fallback: "no_image.jpg" %>
-                <br />
-                <%= link_to @book.user.name, user_path(@user) %>
+                <%= link_to user_path(@user.id) do %>
+                  <%= attachment_image_tag @book.user, :profile_image, size: "50x50", fallback: "no_image.jpg" %>
+                  <br />
+                  <%= @book.user.name %>
+                <% end %>
               </td>
               <td><%= link_to @book.title, book_path %></td>
               <td><%= @book.body %></td>
               <% if @book.user == current_user %>
-              <td><%= link_to "edit", edit_book_path(@book), class: "btn btn-success" %></td>
+              <td><%= link_to "Edit", edit_book_path(@book), class: "btn btn-success" %></td>
               <td></td>
               <td><%=link_to "Destroy", book_path(@book), method: :delete , data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
                <% end %>
