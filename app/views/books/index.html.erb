@@ -12,7 +12,7 @@
 <%= render 'users/list', book: @book, user: @user %>
 
 
-    <div class="col-lg-8 offset-md-1">
+    <div class="col-md-8 offset-md-1">
      <h2>Books</h2>
       <table class="table">
         <thead>
@@ -28,7 +28,7 @@
             <tr>
               <td>
                 <%= link_to user_path(@user.id) do %>
-                  <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.jpg" %>
+                <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.jpg" %>
                 <% end %>
               </td>
               <td>
@@ -41,6 +41,6 @@
           <% end %>
         </tbody>
       </table>
-    <div class="col-lg-8">
+    </div>
  </div>
 </div>
